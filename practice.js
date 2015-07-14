@@ -3,17 +3,26 @@
 
       //Answer
 
+        // "This" is used to allow one function to operate on many elements without having to pass in the elements every time.
+
   // 2) What are the four rules that govern what the 'this keyword' is bound to and describe each?
 
       //Answer
+
+        // implicit: whatever is left of the dot
+        // bind: returns new function - explicit
+        // call: executes with params - explicit
+        // apply: pass an array or object, executes with decomposition - explicit
 
   // 3) What is the difference between call and apply?
 
       //Answer
 
+        // for call, you have to explicitly give parameters, apply automatically decomposes the given parameters
   // 4) What does .bind do?
 
       //Answer
+        // Creates a new function with the parameter becoming the context
 
 
 //Next Problem
@@ -40,7 +49,18 @@ user.getUsername();
 // Write the function definitions which will make the following function invocations function properly.
 
   //Function Invocations Here
-
+var Car = function(make, model, year) {
+  var newCar = {}
+  newCar.make = make;
+  newCar.model = model;
+  newCar.year = year;
+  newCar.move = 0;
+  newCar.moveCar = function() {
+    this.move += 10;
+    return this.move;
+  }
+  return newCar;
+}
 var prius = Car('Toyota', 'Prius', 2011);
 var mustang = Car('Ford', 'Mustang', 2013);
 
@@ -60,8 +80,8 @@ var getYear = function(){
 //Above you're given the getYear function. Using your prius and mustang objects from above, use the proper syntax that will allow for you to call the getYear function with the prius then the mustang objects being the focal objects. *Don't add getYear as a property on both objects*.
 
   //Code Here
-
-
+getYear.call(prius);
+getYear.call(mustang);
 
 //New Problem
 
@@ -82,9 +102,11 @@ setTimeout(getUsername, 5000);
 //Above you're given an object, a function, and a setTimeout invocation. After 5 seconds, what will the getUsername function return?
 
   //Answer Here
-
+    // undefined
 //In the example above, what is the 'this keyword' bound to when getUsername runs?
 
   //Answer Here
-
+    // the window
 //Fix the setTimeout invocation so that the user object will be the focal object when getUsername is ran.
+
+setTimeout(getUsername.call(user), 5000);
