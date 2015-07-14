@@ -10,18 +10,20 @@
       //Answer
 
         // implicit: whatever is left of the dot
-        // bind: returns new function - explicit
-        // call: executes with params - explicit
-        // apply: pass an array or object, executes with decomposition - explicit
+        // explicit: defined with a .bind(), .call(), or .apply() method
+        // new: used in constructor functions, gives a way to assign properties to a new object
+        // window: if "this" isn't bound in any of the above ways, if defaults to being bound to the window
 
   // 3) What is the difference between call and apply?
 
       //Answer
 
         // for call, you have to explicitly give parameters, apply automatically decomposes the given parameters
+
   // 4) What does .bind do?
 
       //Answer
+      
         // Creates a new function with the parameter becoming the context
 
 
